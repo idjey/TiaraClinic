@@ -196,7 +196,8 @@ export function initSortableTable() {
 }
 
 export function createRowHTML() {
-  return `
+ return `
+    <tr>
     <td class="drag-handle" style="cursor: move;">☰</td>
     <td><input class="form-control date-field" /></td>
     <td><input class="form-control" /></td>
@@ -218,4 +219,28 @@ export function createRowHTML() {
       <span class="save-status ms-2"></span>
       <button class="btn btn-sm btn-danger deleteRow ms-1">🗑️</button>
     </td>`;
+ return `
+    <tr>
+    <td class="drag-handle" style="cursor: move;">☰</td>
+    <td><input class="form-control date-field" /></td>
+    <td><input class="form-control" /></td>
+    <td><input class="form-control" /></td>
+    <td><input class="form-control amount-field" type="number" /></td>
+    <td><input type="checkbox" class="deposit-check" /></td>
+    <td>
+      <select class="form-control deposit-method" disabled>
+        <option value="">--</option>
+        <option value="Online">Online</option>
+        <option value="In-Store">In-Store</option>
+      </select>
+    </td>
+    <td><input class="form-control net-amount" readonly /></td>
+    <td><input class="form-control" /></td>
+    <td><input class="form-control" type="number" /></td>
+    <td>
+      <button class="btn btn-sm btn-primary saveRow">💾</button>
+      <span class="save-status ms-2"></span>
+      <button class="btn btn-sm btn-danger deleteRow ms-1">🗑️</button>
+    </td>
+    </tr>`;
 }
