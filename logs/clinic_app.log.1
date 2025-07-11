@@ -1,0 +1,108 @@
+2025-06-30 17:03:58,186 INFO: Clinic App startup [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:58]
+2025-06-30 17:04:51,771 ERROR: Unhandled exception: 'str object' has no attribute 'strftime' [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\routes\import_wizard.py", line 79, in preview_import
+    return render_template("import_preview.html", rows=rows)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\templates\import_preview.html", line 1, in top-level template code
+    {% extends "base.html" %} {% block title %}Preview Import{% endblock %} {% block
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\templates\base.html", line 27, in top-level template code
+    {% endfor %} {% endwith %} {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\templates\import_preview.html", line 27, in block 'content'
+    <td>{{ row.visit_date.strftime('%Y-%m-%d') }}</td>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\jinja2\utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'strftime'
+2025-06-30 17:04:51,842 ERROR: Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-06-30 17:04:59,722 ERROR: Unhandled exception: 'str object' has no attribute 'strftime' [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\routes\import_wizard.py", line 79, in preview_import
+    return render_template("import_preview.html", rows=rows)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\templates\import_preview.html", line 1, in top-level template code
+    {% extends "base.html" %} {% block title %}Preview Import{% endblock %} {% block
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\templates\base.html", line 27, in top-level template code
+    {% endfor %} {% endwith %} {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\templates\import_preview.html", line 27, in block 'content'
+    <td>{{ row.visit_date.strftime('%Y-%m-%d') }}</td>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\jinja2\utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'strftime'
+2025-06-30 17:04:59,775 ERROR: Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-07-08 13:45:27,840 INFO: Clinic App startup [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:58]

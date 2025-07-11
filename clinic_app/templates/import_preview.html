@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %}Preview Import{% endblock %} {% block
+content %}
+<h2>Preview Imported Data</h2>
+
+<p>{{ rows|length }} rows loaded from Excel</p>
+
+<form method="POST" action="{{ url_for('import_wizard.preview_import') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  <table class="table table-bordered table-sm">
+    <thead class="thead-light">
+      <tr>
+        <th>#</th>
+        <th>Visit Date</th>
+        <th>Treatment</th>
+        <th>Payment Method</th>
+        <th>Actual Amount</th>
+        <th>Deposit Paid</th>
+        <th>Deposit Method</th>
+        <th>Month</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ row.visit_date.strftime('%Y-%m-%d') }}</td>
+        <td>{{ row.treatment }}</td>
+        <td>{{ row.payment_method }}</td>
+        <td>{{ row.actual_amount }}</td>
+        <td>{{ 'Yes' if row.deposit_paid else 'No' }}</td>
+        <td>{{ row.deposit_method }}</td>
+        <td>{{ row.month }}</td>
+        <td>{{ row.year | int }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <button class="btn btn-success">✅ Save All to Database</button>
+  <a
+    href="{{ url_for('import_wizard.import_excel') }}"
+    class="btn btn-secondary ml-2"
+    >⬅️ Back</a
+  >
+</form>
+{% endblock %}

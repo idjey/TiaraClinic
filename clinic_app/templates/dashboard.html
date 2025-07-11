@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Tiara Clinic Dashboard</h2>
+
+<!-- 🔘 Top Controls -->
+<div class="mb-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+  <div class="d-flex gap-2 flex-wrap">
+    <a href="{{ url_for('export.export_excel') }}" class="btn btn-outline-success">📥 Export Excel</a>
+    <a href="{{ url_for('export.export_pdf') }}" class="btn btn-outline-danger">📄 Export PDF</a>
+    <a href="{{ url_for('import_wizard.import_excel') }}" class="btn btn-outline-primary">🪄 Excel Import Wizard</a>
+  </div>
+  <div class="d-flex gap-2">
+    <button id="addRowBtn" class="btn btn-success">+ Add Row</button>
+    <button id="darkModeToggle" class="btn btn-outline-secondary">🌙 Toggle Dark Mode</button>
+  </div>
+</div>
+
+<!-- 🔔 Flash Messages -->
+<div id="flash-container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, msg in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ msg }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+<!-- 📊 Data Table -->
+<table id="visitTable" class="table table-bordered table-striped align-middle">
+  <thead class="table-dark">
+    <tr>
+      <th>↕️</th>
+      <th>Date</th>
+      <th>Treatment</th>
+      <th>Payment Method</th>
+      <th>Actual Amount (£)</th>
+      <th>Deposit Paid</th>
+      <th>Deposit Method</th>
+      <th>Net Amount (£)</th>
+      <th>Month</th>
+      <th>Year</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="visitTableBody">
+    {% for v in visits %}
+    <tr data-id="{{ v.id }}">
+      <td class="drag-handle" style="cursor: move;">☰</td>
+      <td><input class="form-control date-field" value="{{ v.visit_date.strftime('%Y-%m-%d') if v.visit_date }}" /></td>
+      <td><input class="form-control" value="{{ v.treatment }}" /></td>
+      <td><input class="form-control" value="{{ v.payment_method }}" /></td>
+      <td><input class="form-control amount-field" type="number" value="{{ v.actual_amount }}" /></td>
+      <td><input type="checkbox" class="deposit-check" {% if v.deposit_paid %}checked{% endif %} /></td>
+      <td>
+        <select class="form-control deposit-method" {% if not v.deposit_paid %}disabled{% endif %}>
+          <option value="">--</option>
+          <option value="Online" {% if v.deposit_method == 'Online' %}selected{% endif %}>Online</option>
+          <option value="In-Store" {% if v.deposit_method == 'In-Store' %}selected{% endif %}>In-Store</option>
+        </select>
+      </td>
+      <td><input class="form-control net-amount" value="{{ v.net_amount }}" readonly /></td>
+      <td><input class="form-control" value="{{ v.month }}" /></td>
+      <td><input class="form-control" type="number" value="{{ v.year }}" /></td>
+      <td>
+        <button class="btn btn-sm btn-primary saveRow">💾</button>
+        <span class="save-status ms-2"></span>
+        <button class="btn btn-sm btn-danger deleteRow ms-1">🗑️</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4"><strong>Total Actual Amount:</strong></td>
+      <td id="totalActual" colspan="7">£0.00</td>
+    </tr>
+  </tfoot>
+</table>
+
+<!-- 📈 Charts Section -->
+<div class="row my-4">
+  <div class="col-md-6">
+    <h5>Treatment Distribution</h5>
+    <canvas id="treatmentPieChart"></canvas>
+  </div>
+  <div class="col-md-6">
+    <h5>Revenue by Treatment</h5>
+    <canvas id="treatmentBarChart"></canvas>
+  </div>
+</div>
+
+<!-- JS: Flatpickr & Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- 💻 Load Dashboard Enhancements -->
+<script type="module">
+  import { initFlatpickrs, bindRow, loadChartData, initSortableTable, createRowHTML } from "{{ url_for('static', filename='js/dashboard-enhancements.js') }}";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const table = document.querySelector("#visitTable tbody");
+    const addRowBtn = document.getElementById("addRowBtn");
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const totalActualCell = document.getElementById("totalActual");
+
+    // Initialize existing rows
+    table.querySelectorAll("tr").forEach(bindRow);
+
+    // Add Row functionality
+    addRowBtn.addEventListener("click", () => {
+      const newRow = table.insertRow();
+      newRow.innerHTML = createRowHTML();
+      newRow.classList.add("fade-in");
+      bindRow(newRow);
+      initFlatpickrs(newRow); // Initialize flatpickr for the new row
+      totalActualCell.dispatchEvent(new Event("updateTotal")); // Update total after adding new row
+    });
+
+    // Dark Mode Toggle functionality
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+      });
+    }
+
+    // Initial calculations and chart loading
+    totalActualCell.addEventListener("updateTotal", () => {
+      let total = 0;
+      document.querySelectorAll(".amount-field").forEach((f) => {
+        total += parseFloat(f.value) || 0;
+      });
+      totalActualCell.textContent = `£${total.toFixed(2)}`;
+    });
+    totalActualCell.dispatchEvent(new Event("updateTotal"));
+
+    loadChartData();
+    initSortableTable();
+  });
+</script>
+
+<!-- ⏳ Auto-hide Flash -->
+<script>
+  setTimeout(() => {
+    document.querySelectorAll('#flash-container .alert').forEach(el => el.remove());
+  }, 5000);
+</script>
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='js/dashboard-enhancements.js') }}"></script>
+{% endblock %}

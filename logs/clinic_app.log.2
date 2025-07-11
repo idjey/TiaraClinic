@@ -1,0 +1,108 @@
+2025-06-30 15:50:06,611 INFO: Clinic App startup [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:58]
+2025-06-30 15:53:14,745 ERROR: Unhandled exception: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required. [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask_login\utils.py", line 285, in decorated_view
+    return current_app.login_manager.unauthorized()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask_login\login_manager.py", line 178, in unauthorized
+    abort(401)
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\helpers.py", line 284, in abort
+    current_app.aborter(code, *args, **kwargs)
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\werkzeug\exceptions.py", line 876, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2025-06-30 15:53:14,858 ERROR: Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-06-30 15:54:46,973 INFO: Clinic App startup [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:58]
+2025-06-30 16:11:57,087 ERROR: Unhandled exception: time data 'Sat, 06 Jan 2024 00:00:00 GMT' does not match format '%Y-%m-%d' [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\routes\import_wizard.py", line 63, in preview_import
+    visit.visit_date = row["visit_date"]
+                       ~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\AppData\Local\Programs\Python\Python312\Lib\_strptime.py", line 554, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\AppData\Local\Programs\Python\Python312\Lib\_strptime.py", line 333, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data 'Sat, 06 Jan 2024 00:00:00 GMT' does not match format '%Y-%m-%d'
+2025-06-30 16:11:57,132 ERROR: Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-06-30 16:17:16,832 ERROR: Unhandled exception: time data 'Sat, 06 Jan 2024 00:00:00 GMT' does not match format '%Y-%m-%d' [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\routes\import_wizard.py", line 63, in preview_import
+    visit.visit_date = row["visit_date"]
+                       ~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\AppData\Local\Programs\Python\Python312\Lib\_strptime.py", line 554, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\AppData\Local\Programs\Python\Python312\Lib\_strptime.py", line 333, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data 'Sat, 06 Jan 2024 00:00:00 GMT' does not match format '%Y-%m-%d'
+2025-06-30 16:17:16,865 ERROR: Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again. [in C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\clinic_app\__init__.py:45]
+Traceback (most recent call last):
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dj_ka\OneDrive\Documents\Tiara Excel Wizard\venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.

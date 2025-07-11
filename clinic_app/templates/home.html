@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block title %}Welcome{% endblock %} {% block
+content %}
+
+<div class="home-container text-center mt-5">
+  <h1 class="mb-4">Welcome to Tiara Clinics</h1>
+
+  <div id="crown" class="crown-emoji" title="Click me to login 👑">👑</div>
+
+  <p class="mt-3 text-muted">Click the crown to enter the realm.</p>
+</div>
+
+<style>
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .crown-emoji {
+    font-size: 100px;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+  }
+
+  .crown-emoji:hover {
+    transform: scale(1.2) rotate(10deg);
+  }
+
+  .spin {
+    animation: spin 1s ease forwards;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) scale(1.2);
+    }
+  }
+</style>
+
+<script>
+  const crown = document.getElementById("crown");
+  crown.addEventListener("click", () => {
+    crown.classList.add("spin");
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 900);
+  });
+</script>
+
+{% endblock %}

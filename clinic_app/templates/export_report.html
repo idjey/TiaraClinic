@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Clinic Visits Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+      }
+      th,
+      td {
+        border: 1px solid #333;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background-color: #555;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      h2 {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Clinic Visit Report</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Treatment</th>
+          <th>Payment Method</th>
+          <th>Actual (£)</th>
+          <th>Deposit Paid</th>
+          <th>Deposit Method</th>
+          <th>Deposit (£)</th>
+          <th>Net (£)</th>
+          <th>Month</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for v in visits %}
+        <tr>
+          <td>{{ v.visit_date }}</td>
+          <td>{{ v.treatment }}</td>
+          <td>{{ v.payment_method }}</td>
+          <td>{{ "%.2f"|format(v.actual_amount) }}</td>
+          <td>{{ "Yes" if v.deposit_paid else "No" }}</td>
+          <td>{{ v.deposit_method or "" }}</td>
+          <td>{{ "%.2f"|format(v.deposit_amount) }}</td>
+          <td>{{ "%.2f"|format(v.net_amount) }}</td>
+          <td>{{ v.month }}</td>
+          <td>{{ v.year }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,290 @@
+/* ====== BASE UI ====== */
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+table {
+  font-size: 0.95rem;
+  border-collapse: collapse;
+  background-color: #fff;
+  width: 100%;
+}
+
+th,
+td {
+  vertical-align: middle !important;
+  text-align: center;
+  padding: 0.75rem !important;
+}
+
+thead th {
+  background-color: #343a40;
+  color: #fff;
+  font-weight: 500;
+}
+
+tfoot td {
+  background-color: #e9ecef;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* ====== FORM FIELDS ====== */
+input.form-control,
+select.form-control {
+  height: 38px;
+  font-size: 0.9rem;
+  padding: 0.4rem;
+}
+
+input[readonly] {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.3);
+  margin-top: 5px;
+}
+
+/* ====== BUTTONS ====== */
+button.btn {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.saveRow {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+button.deleteRow {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+button#addRowBtn,
+button#darkModeToggle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ====== FLASH MESSAGES ====== */
+.alert {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.alert-info {
+  background-color: #e7f3fe;
+  color: #0c5460;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* ====== ROW HIGHLIGHTS & ANIMATIONS ====== */
+.row-saved {
+  animation: flashGreen 1s ease-in-out;
+}
+
+@keyframes flashGreen {
+  from { background-color: #d4edda; }
+  to { background-color: transparent; }
+}
+
+.row-deleted {
+  animation: flashRed 1s ease-in-out;
+  background-color: #f8d7da !important;
+}
+
+@keyframes flashRed {
+  from { background-color: #f8d7da; }
+  to { background-color: transparent; }
+}
+
+.fade-out {
+  animation: fadeOut 0.4s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+tr.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== DARK MODE ====== */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .table {
+  background-color: #1e1e1e;
+  color: #ccc;
+}
+
+body.dark-mode .table thead {
+  background-color: #333;
+}
+
+body.dark-mode .table tbody tr {
+  background-color: #222;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+  background-color: #2c2c2c;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode .form-control {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
+
+body.dark-mode .btn {
+  border-color: #555;
+}
+
+body.dark-mode th {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+body.dark-mode td input,
+body.dark-mode td select {
+  background-color: #2b2b2b;
+  color: white;
+  border: 1px solid #555;
+}
+
+body.dark-mode .alert-info {
+  background-color: #29495e;
+  color: #d1ecf1;
+}
+
+body.dark-mode .alert-success {
+  background-color: #1f4323;
+  color: #d4edda;
+}
+
+body.dark-mode .alert-danger {
+  background-color: #5e1f23;
+  color: #f8d7da;
+}
+
+/* ====== SPINNER ALIGNMENT ====== */
+.row-spinner {
+  vertical-align: middle;
+}
+
+/* ====== RESPONSIVE ====== */
+@media screen and (max-width: 768px) {
+  table thead {
+    display: none;
+  }
+
+  table,
+  table tbody,
+  table tr,
+  table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: white;
+  }
+
+  table td {
+    text-align: left;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    top: 0.5rem;
+    font-weight: bold;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  button.btn {
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+
+  body.dark-mode table td {
+    background-color: #222;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-control {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
