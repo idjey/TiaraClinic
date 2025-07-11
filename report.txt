@@ -1,0 +1,51 @@
+# Project File Report: TiaraClinic
+
+## Top-Level Files
+
+- **run.py**: Entry point for the Flask app. Imports and runs the Flask application using the factory pattern from `clinic_app`.
+- **requirements.txt**: Lists all Python dependencies required for the project, including Flask, Flask extensions, pandas, pdfkit, and more.
+- **README.md**: Placeholder for project documentation.
+- **.gitignore**: (If present) Should exclude Python bytecode, virtual environments, logs, and other non-source files from version control.
+
+## Main Application Package: `clinic_app/`
+
+### __init__.py
+- Initializes the Flask app and its extensions (SQLAlchemy, LoginManager, Mail, CSRF, Migrate).
+- Registers all blueprints for routes (auth, dashboard, import/export, API).
+- Provides the `create_app()` factory function for app instantiation.
+
+### models/
+- **clinic_visit.py**: Defines the `ClinicVisit` SQLAlchemy model for storing visit data (user, date, treatment, payment, amounts, etc).
+- **user.py**: Defines the `User` SQLAlchemy model (with Flask-Login integration) for authentication and role management.
+
+### routes/
+- **dashboard.py**: Handles dashboard display and CRUD operations for clinic visits. Includes endpoints for viewing, adding, editing, and deleting visits. Used by the frontend for AJAX operations.
+- **export.py**: Handles exporting visit data to Excel and PDF. Uses pandas for Excel and pdfkit for PDF generation. Only allows access to data based on user role.
+- **import_wizard.py**: Handles Excel file uploads and data import. Validates and parses Excel files, stores parsed data in session, and commits to the database after user confirmation.
+- **auth.py**: Handles authentication (login, OTP verification, logout) and user session management. Sends OTPs via email for login.
+
+### utils/
+- **excel_parser.py**: Contains logic for validating and parsing uploaded Excel files, including column normalization and alias handling.
+- **seed_users.py**: Script for seeding the database with initial user accounts. Can be run standalone.
+- **__init__.py**: Marks the utils directory as a Python package.
+
+### static/js/
+- **dashboard-enhancements.js**: Main JavaScript for dashboard interactivity. Handles adding/editing/deleting rows, drag-and-drop sorting (Sortable.js), date pickers (Flatpickr), dark mode toggle, and chart rendering (Chart.js). Communicates with backend via AJAX.
+
+### templates/
+- **dashboard.html**: Main dashboard page. Displays visit table, control buttons, and charts. Integrates with dashboard-enhancements.js for interactivity.
+- **import_wizard.html, import_preview.html**: Templates for the Excel import wizard and preview steps.
+- **login.html, verify.html**: Templates for authentication (login and OTP verification).
+- **base.html**: Base template for all pages. Includes Bootstrap, Flatpickr, and JS/CSS includes.
+- **export_pdf_template.html**: Used for rendering PDF exports.
+
+### uploads/
+- Stores uploaded Excel files for import.
+
+### Other
+- **tests/**: Contains test files for the application (e.g., test_app.py, test_basic.py).
+- **logs/**: Stores application log files.
+
+---
+
+This report summarizes the purpose and main logic of each file in the TiaraClinic codebase. For more details, see the code in each file or ask for a specific file's content or logic.
